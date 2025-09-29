@@ -1,0 +1,365 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Press Start 2P', monospace;
+    background: #1a1a2e;
+    color: #00ff00;
+    min-height: 100vh;
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 30px;
+    border: 3px solid #00ff00;
+    padding: 20px;
+    background: #0f0f23;
+}
+
+.title {
+    font-size: 24px;
+    color: #00ff00;
+    text-shadow: 2px 2px 0px #004400;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    font-size: 8px;
+    color: #ffff00;
+    letter-spacing: 2px;
+}
+
+.main-content {
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.video-section {
+    background: #0f0f23;
+    border: 3px solid #00ff00;
+    padding: 20px;
+}
+
+.frame-display {
+    margin-bottom: 20px;
+}
+
+#currentFrame {
+    width: 100%;
+    height: auto;
+    border: 2px solid #ffff00;
+    background: #000;
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+}
+
+.frame-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    font-size: 8px;
+}
+
+.frame-controls {
+    display: flex;
+    gap: 5px;
+}
+
+.timeline {
+    border-top: 2px solid #ffff00;
+    padding-top: 15px;
+}
+
+.timeline-header {
+    font-size: 10px;
+    color: #ffff00;
+    margin-bottom: 10px;
+}
+
+.timeline-frames {
+    display: flex;
+    gap: 5px;
+    overflow-x: auto;
+    padding: 5px 0;
+}
+
+.timeline-frame {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    border: 2px solid #666;
+    background: #000;
+    cursor: pointer;
+    position: relative;
+    transition: border-color 0.2s;
+}
+
+.timeline-frame:hover {
+    border-color: #ffff00;
+}
+
+.timeline-frame.active {
+    border-color: #00ff00;
+}
+
+.frame-thumb {
+    width: 100%;
+    height: 80%;
+    background: #333;
+    image-rendering: pixelated;
+}
+
+.timeline-frame span {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    font-size: 6px;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.8);
+    color: #00ff00;
+}
+
+.controls-section {
+    background: #0f0f23;
+    border: 3px solid #00ff00;
+    padding: 20px;
+}
+
+.prompt-area {
+    margin-bottom: 30px;
+}
+
+.label {
+    display: block;
+    font-size: 8px;
+    color: #ffff00;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+
+.prompt-input {
+    width: 100%;
+    background: #000;
+    border: 2px solid #00ff00;
+    color: #00ff00;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 8px;
+    padding: 10px;
+    resize: vertical;
+    min-height: 80px;
+}
+
+.prompt-input:focus {
+    outline: none;
+    border-color: #ffff00;
+    box-shadow: 0 0 10px rgba(255, 255, 0, 0.3);
+}
+
+.generate-controls {
+    margin-top: 15px;
+}
+
+.btn {
+    font-family: 'Press Start 2P', monospace;
+    border: 2px solid;
+    background: transparent;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 8px;
+    transition: all 0.2s;
+    position: relative;
+    letter-spacing: 1px;
+}
+
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.btn-primary {
+    color: #000;
+    background: #00ff00;
+    border-color: #00ff00;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.btn-primary:hover:not(:disabled) {
+    background: #ffff00;
+    border-color: #ffff00;
+    box-shadow: 0 0 15px rgba(255, 255, 0, 0.5);
+}
+
+.btn-secondary {
+    color: #00ff00;
+    border-color: #00ff00;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+.btn-secondary:hover:not(:disabled) {
+    background: #00ff00;
+    color: #000;
+}
+
+.btn-small {
+    color: #ffff00;
+    border-color: #ffff00;
+    padding: 5px 8px;
+    font-size: 6px;
+}
+
+.btn-small:hover:not(:disabled) {
+    background: #ffff00;
+    color: #000;
+}
+
+.loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.loading-bar {
+    width: 60px;
+    height: 4px;
+    background: #000;
+    border: 1px solid #00ff00;
+    position: relative;
+    overflow: hidden;
+}
+
+.loading-bar::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: #00ff00;
+    animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+.options {
+    margin-top: 10px;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    font-size: 8px;
+    cursor: pointer;
+    color: #ffff00;
+}
+
+.checkbox-label input[type="checkbox"] {
+    display: none;
+}
+
+.checkmark {
+    width: 12px;
+    height: 12px;
+    border: 2px solid #ffff00;
+    margin-right: 8px;
+    position: relative;
+    background: #000;
+}
+
+.checkbox-label input[type="checkbox"]:checked + .checkmark {
+    background: #ffff00;
+}
+
+.checkbox-label input[type="checkbox"]:checked + .checkmark::after {
+    content: '';
+    position: absolute;
+    top: 1px;
+    left: 3px;
+    width: 3px;
+    height: 6px;
+    border: solid #000;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.project-controls {
+    border-top: 2px solid #666;
+    padding-top: 20px;
+}
+
+.project-info {
+    margin-top: 15px;
+    font-size: 6px;
+    color: #888;
+    line-height: 1.5;
+}
+
+.tips {
+    background: #0f0f23;
+    border: 3px solid #ffff00;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.tips-header {
+    font-size: 10px;
+    color: #ffff00;
+    margin-bottom: 15px;
+}
+
+.tips ul {
+    list-style: none;
+    font-size: 8px;
+    line-height: 1.6;
+}
+
+.tips li {
+    margin-bottom: 8px;
+    padding-left: 15px;
+    position: relative;
+}
+
+.tips li::before {
+    content: '▶';
+    position: absolute;
+    left: 0;
+    color: #00ff00;
+}
+
+@media (max-width: 768px) {
+    .main-content {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .title {
+        font-size: 16px;
+    }
+    
+    .container {
+        padding: 10px;
+    }
+}
+

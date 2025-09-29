@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>8-Bit Video Generator</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 class="title">8-BIT VIDEO GENERATOR</h1>
+            <div class="subtitle">AI-Powered Frame-by-Frame Animation</div>
+        </header>
+
+        <main class="main-content">
+            <div class="video-section">
+                <div class="frame-display">
+                    <canvas id="currentFrame" width="320" height="240"></canvas>
+                    <div class="frame-info">
+                        <span id="frameCounter">Frame: 1 / 1</span>
+                        <div class="frame-controls">
+                            <button id="prevFrame" class="btn btn-small" disabled>◀</button>
+                            <button id="nextFrame" class="btn btn-small" disabled>▶</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline">
+                    <div class="timeline-header">TIMELINE</div>
+                    <div id="timelineFrames" class="timeline-frames">
+                        <div class="timeline-frame active" data-frame="0">
+                            <div class="frame-thumb"></div>
+                            <span>1</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="controls-section">
+                <div class="prompt-area">
+                    <label for="framePrompt" class="label">DESCRIBE NEXT FRAME:</label>
+                    <textarea 
+                        id="framePrompt" 
+                        class="prompt-input" 
+                        placeholder="Describe what happens in the next frame... (e.g., 'A pixel knight moves to the right', 'The dragon breathes fire', 'Add a treasure chest')"
+                        rows="3"></textarea>
+                    
+                    <div class="generate-controls">
+                        <button id="generateFrame" class="btn btn-primary">
+                            <span class="btn-text">GENERATE NEXT FRAME</span>
+                            <div class="loading" id="loadingIcon" style="display: none;">
+                                <div class="loading-bar"></div>
+                            </div>
+                        </button>
+                        
+                        <div class="options">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="keepBackground" checked>
+                                <span class="checkmark"></span>
+                                Keep Background
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-controls">
+                    <button id="newProject" class="btn btn-secondary">NEW PROJECT</button>
+                    <button id="exportFrames" class="btn btn-secondary">EXPORT FRAMES</button>
+                    <div class="project-info">
+                        <div>Resolution: 320x240</div>
+                        <div>Style: 8-Bit Pixel Art</div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <div class="tips">
+            <div class="tips-header">💡 TIPS</div>
+            <ul>
+                <li>Start with a simple scene description for frame 1</li>
+                <li>Use clear, simple descriptions for smooth transitions</li>
+                <li>Mention specific pixel art or 8-bit game elements</li>
+                <li>Keep movements small between frames for better animation</li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516" integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg==" data-cf-beacon='{"version":"2024.11.0","token":"4c6229722a6346bc8eb5cb0e5eae5d41","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+</body>
+</html>
+
